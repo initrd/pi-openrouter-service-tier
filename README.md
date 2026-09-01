@@ -153,6 +153,11 @@ npm run typecheck
 The pure config logic (parsing, tier resolution, persistence) lives in
 [`config.ts`](./config.ts) and is unit tested independently of the pi runtime.
 
+## Contributing
+
+See [`CONTRIBUTING.md`](./CONTRIBUTING.md) for commit message conventions and
+development guidance.
+
 ## License
 
 MIT — see [`LICENSE`](./LICENSE).
