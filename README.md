@@ -86,13 +86,17 @@ with real IDs that support service tiers on OpenRouter.
   // Optional allowlist of managed model IDs. When empty/omitted, every
   // OpenRouter model is considered managed.
   "models": [
-    "openai/gpt-5",
-    "openai/gpt-5-mini"
+    "google/gemini-3.7-flash",
+    "openai/gpt-5.6-sol",
+    "openai/gpt-5.6-sol-pro",
+    "x-ai/grok-4.6",
+    "google/gemini-3.6-flash",
+    "google/gemini-3.5-flash-lite"
   ],
 
   // Per-model overrides. These take precedence over defaultTier.
   "overrides": {
-    "openai/gpt-5": "priority"
+    "google/gemini-3.7-flash": "priority"
   }
 }
 ```
@@ -117,11 +121,12 @@ Manage the configuration interactively:
 | `/service-tier` | Show the effective tier for the active model |
 | `/service-tier flex` | Set the global default tier to `flex` |
 | `/service-tier priority` | Set the global default tier to `priority` |
-| `/service-tier <model> <tier>` | Set a per-model override (e.g. `/service-tier openai/gpt-5 priority`) |
+| `/service-tier <model> <tier>` | Set a per-model override (e.g. `/service-tier google/gemini-3.7-flash priority`) |
 | `/service-tier clear` | Reset all service-tier configuration |
 
-Model ids use OpenRouter's full form, e.g. `openai/gpt-5` or
-`google/gemini-2.5-flash` (illustrative — use IDs that support service tiers).
+Model ids use OpenRouter's full form, e.g. `google/gemini-3.7-flash`,
+`openai/gpt-5.6-sol`, `x-ai/grok-4.6`, or `google/gemini-3.5-flash-lite`
+(illustrative — use IDs that support service tiers).
 
 ## How it works
 
