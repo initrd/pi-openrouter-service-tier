@@ -3,15 +3,22 @@
 	"version": "0.1.0",
 	"private": true,
 	"description": "A pi extension that adds OpenRouter service tier (flex/priority) support.",
+	"keywords": ["pi-package", "extensions"],
 	"type": "module",
 	"scripts": {
 		"typecheck": "tsc --noEmit",
 		"test": "node --import tsx --test tests/**/*.test.ts"
+	},
+	"peerDependencies": {
+		"@earendil-works/pi-coding-agent": "*"
 	},
 	"devDependencies": {
 		"@earendil-works/pi-coding-agent": "latest",
 		"@types/node": "^20.19.43",
 		"tsx": "^4.19.0",
 		"typescript": "^5.6.0"
+	},
+	"pi": {
+		"extensions": ["./index.ts"]
 	}
 }

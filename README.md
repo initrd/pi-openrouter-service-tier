@@ -18,7 +18,33 @@ This extension injects `service_tier` into the request payload pi sends to OpenR
 
 ## Install
 
-Copy this directory into a pi auto-discovery location and reload:
+The extension is a pi package (declares a `pi.extensions` manifest). Reference it
+from the pi config rather than copying files.
+
+**Option A — reference this repo directory directly (no copy).**
+
+Add the repo to the `extensions` array in your global pi settings
+(`~/.pi/agent/settings.json`):
+
+```json
+{
+  "extensions": [
+    "/home/ashish/Documents/git/pi-openrouter-service-tier"
+  ]
+}
+```
+
+Then reload in pi: `/reload`.
+
+**Option B — install as a pi package.**
+
+```bash
+pi install /home/ashish/Documents/git/pi-openrouter-service-tier
+```
+
+This adds it to your settings under `packages` and loads it with package rules.
+
+**Option C — copy into an extensions folder.**
 
 ```bash
 # Global (all projects)
@@ -28,11 +54,7 @@ cp -r pi-openrouter-service-tier ~/.pi/agent/extensions/openrouter-service-tier
 # cp -r pi-openrouter-service-tier .pi/extensions/openrouter-service-tier
 ```
 
-Then in pi:
-
-```
-/reload
-```
+Then in pi: `/reload`.
 
 ## Configuration
 
