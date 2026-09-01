@@ -14,35 +14,42 @@ This extension injects `service_tier` into the request payload pi sends to OpenR
 ## Requirements
 
 - pi (any recent version with the `before_provider_request` extension hook)
-- An OpenRouter provider configured in pi (`provide OPENROUTER_API_KEY`, or OAuth)
+- An OpenRouter provider configured in pi (set the `OPENROUTER_API_KEY`
+  environment variable, or sign in via OpenRouter OAuth)
 
 ## Install
 
-The extension is a pi package (declares a `pi.extensions` manifest). Reference it
-from the pi config rather than copying files.
+The extension is a pi package (declares a `pi.extensions` manifest). There are
+several ways to load it: install from npm/git, point pi at a local checkout, or
+copy it into an extensions folder. Choose whichever fits your setup.
 
-**Option A — reference this repo directory directly (no copy).**
+**Option A — install from a published source (npm or git).**
 
-Add the repo to the `extensions` array in your global pi settings
-(`~/.pi/agent/settings.json`):
+```bash
+# npm
+pi install npm:<your-package-name>
+
+# git (e.g. a hosted repository)
+pi install git:github.com/<your-org>/<your-repo>
+pi install https://github.com/<your-org>/<your-repo>
+```
+
+This adds it to your settings under `packages` and loads it with package rules.
+
+**Option B — point pi at a local checkout (no copy).**
+
+Add the repo to the `extensions` array in your pi settings
+(`~/.pi/agent/settings.json` for global, `.pi/settings.json` for project-local):
 
 ```json
 {
   "extensions": [
-    "/home/ashish/Documents/git/pi-openrouter-service-tier"
+    "/absolute/path/to/pi-openrouter-service-tier"
   ]
 }
 ```
 
 Then reload in pi: `/reload`.
-
-**Option B — install as a pi package.**
-
-```bash
-pi install /home/ashish/Documents/git/pi-openrouter-service-tier
-```
-
-This adds it to your settings under `packages` and loads it with package rules.
 
 **Option C — copy into an extensions folder.**
 
@@ -64,7 +71,8 @@ The extension reads a JSON config file. By default it uses
 configs or testing).
 
 See [`openrouter-service-tier.example.json`](./openrouter-service-tier.example.json)
-for a starting point.
+for a starting point. Model IDs below are illustrative examples — replace them
+with real IDs that support service tiers on OpenRouter.
 
 ```jsonc
 {
@@ -113,7 +121,7 @@ Manage the configuration interactively:
 | `/service-tier clear` | Reset all service-tier configuration |
 
 Model ids use OpenRouter's full form, e.g. `openai/gpt-5` or
-`google/gemini-2.5-flash`.
+`google/gemini-2.5-flash` (illustrative — use IDs that support service tiers).
 
 ## How it works
 
@@ -144,3 +152,11 @@ npm run typecheck
 
 The pure config logic (parsing, tier resolution, persistence) lives in
 [`config.ts`](./config.ts) and is unit tested independently of the pi runtime.
+
+## License
+
+MIT — see [`LICENSE`](./LICENSE).
+
+Before publishing, update the package metadata in
+[`package.json`](./package.json) (`name`, `version`, `license`) and add a real
+`LICENSE` file as appropriate for your project.

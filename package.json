@@ -4,6 +4,7 @@
 	"private": true,
 	"description": "A pi extension that adds OpenRouter service tier (flex/priority) support.",
 	"keywords": ["pi-package", "extensions"],
+	"license": "MIT",
 	"type": "module",
 	"scripts": {
 		"typecheck": "tsc --noEmit",
