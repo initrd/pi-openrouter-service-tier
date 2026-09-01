@@ -95,8 +95,10 @@ with real IDs that support service tiers on OpenRouter.
   ],
 
   // Per-model overrides. These take precedence over defaultTier.
+  // e.g. x-ai/grok-4.6 only supports the priority tier, so it gets a
+  // priority override while the flex default applies to the others.
   "overrides": {
-    "google/gemini-3.7-flash": "priority"
+    "x-ai/grok-4.6": "priority"
   }
 }
 ```

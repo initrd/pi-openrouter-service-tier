@@ -10,6 +10,6 @@
 		"google/gemini-3.5-flash-lite"
 	],
 	"overrides": {
-		"google/gemini-3.7-flash": "priority"
+		"x-ai/grok-4.6": "priority"
 	}
 }
