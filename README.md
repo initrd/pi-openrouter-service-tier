@@ -19,49 +19,20 @@ This extension injects `service_tier` into the request payload pi sends to OpenR
 
 ## Install
 
-The extension is a pi package (declares a `pi.extensions` manifest). There are
-several ways to load it: install from npm/git, point pi at a local checkout, or
-copy it into an extensions folder. Choose whichever fits your setup.
-
-**Option A — install from a published source (npm or git).**
+The extension is a pi package (declares a `pi.extensions` manifest). It is
+hosted on [GitHub](https://github.com/initrd/pi-openrouter-service-tier) but has
+not been published to npm, so install it from the git repository:
 
 ```bash
-# npm
-pi install npm:<your-package-name>
+# No ref: always gets the latest
+pi install https://github.com/initrd/pi-openrouter-service-tier
 
-# git (e.g. a hosted repository)
-pi install git:github.com/<your-org>/<your-repo>
-pi install https://github.com/<your-org>/<your-repo>
+# Or with a pinned tag/release (e.g. v0.1.0)
+pi install git:github.com/initrd/pi-openrouter-service-tier@v0.1.0
 ```
 
 This adds it to your settings under `packages` and loads it with package rules.
-
-**Option B — point pi at a local checkout (no copy).**
-
-Add the repo to the `extensions` array in your pi settings
-(`~/.pi/agent/settings.json` for global, `.pi/settings.json` for project-local):
-
-```json
-{
-  "extensions": [
-    "/absolute/path/to/pi-openrouter-service-tier"
-  ]
-}
-```
-
 Then reload in pi: `/reload`.
-
-**Option C — copy into an extensions folder.**
-
-```bash
-# Global (all projects)
-cp -r pi-openrouter-service-tier ~/.pi/agent/extensions/openrouter-service-tier
-
-# Or project-local
-# cp -r pi-openrouter-service-tier .pi/extensions/openrouter-service-tier
-```
-
-Then in pi: `/reload`.
 
 ## Configuration
 
@@ -169,6 +140,7 @@ development guidance.
 
 MIT — see [`LICENSE`](./LICENSE).
 
-Before publishing, update the package metadata in
-[`package.json`](./package.json) (`name`, `version`, `license`) and add a real
-`LICENSE` file as appropriate for your project.
+This extension is distributed via its GitHub repository and is not available on
+npm. If you later publish it to npm, note that `package.json` currently has
+`"private": true`, which blocks npm publishing — remove it, and add a real
+`LICENSE` file, before doing so.
